@@ -1,8 +1,11 @@
-const API_URL_RANDOM = "https://api.thecatapi.com/v1/images/search?limit=2&api_key=23c05573-2fea-4b9e-b29a-9d107fe2b1e9";
+const API_URL_RANDOM = "https://api.thecatapi.com/v1/images/search?limit=2";
 
-const API_URL_FAVORITES = "https://api.thecatapi.com/v1/favourites?api_key=23c05573-2fea-4b9e-b29a-9d107fe2b1e9";
+const API_URL_FAVORITES = "https://api.thecatapi.com/v1/favourites";
 
-const API_URL_FAVORITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}?api_key=23c05573-2fea-4b9e-b29a-9d107fe2b1e9`;
+const API_URL_FAVORITES_DELETE = (id) => `https://api.thecatapi.com/v1/favourites/${id}`;
+
+const API_URL_UPLOAD = "https://api.thecatapi.com/v1/images/upload";
+
 
 const spanError = document.getElementById("error")
 
@@ -33,7 +36,12 @@ const loadRandomMichis = async () =>{
 
 
 const loadFavoritesMichis = async () =>{
-    const response = await fetch(API_URL_FAVORITES);
+    const response = await fetch(API_URL_FAVORITES, {
+        method: "GET",
+        headers: {
+            "X-API-KEY": "23c05573-2fea-4b9e-b29a-9d107fe2b1e9",
+        },
+    });
     const data = await response.json();
     console.log("favorites",data);
 
@@ -67,7 +75,8 @@ const saveFavouriteMichis = async (id) =>{
     const response = await fetch(API_URL_FAVORITES, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-API-KEY": "23c05573-2fea-4b9e-b29a-9d107fe2b1e9",
         },
         body: JSON.stringify({
             image_id: id
@@ -89,6 +98,9 @@ const saveFavouriteMichis = async (id) =>{
 const deleteFavoriteMichis = async(id) =>{
     const response = await fetch(API_URL_FAVORITES_DELETE(id), {
         method: "DELETE",
+        headers: {
+            "X-API-KEY": "23c05573-2fea-4b9e-b29a-9d107fe2b1e9"
+        }
     });
     const data = await response.json();
 
@@ -97,6 +109,34 @@ const deleteFavoriteMichis = async(id) =>{
     } else {
         console.log("Michi eliminado de favoritos");
         loadFavoritesMichis();
+    }
+}
+
+const uploadMichiPhoto = async () =>{
+    const form = document.getElementById("uploadingForm")
+    const formData = new FormData(form);
+
+    console.log(formData.get("file"))
+
+    const response = await fetch(API_URL_UPLOAD, {
+        method: "POST",
+        headers: {
+            "X-API-KEY": "23c05573-2fea-4b9e-b29a-9d107fe2b1e9",
+            // "Content-Type": "multipart/form-data",
+        },
+        body: formData,
+    })
+    const data = await response.json();
+
+    if( response.status !== 200){
+        spanError.innerHTML = "Hubo un error en Subir michis " + response.status  + data.message;    
+    } else {
+        console.log("Foto de michi cargada");
+        console.log({data});
+        console.log(data.url);
+        saveFavouriteMichis(data.id);
+
+        
     }
 }
 
