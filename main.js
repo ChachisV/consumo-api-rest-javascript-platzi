@@ -121,22 +121,21 @@ const uploadMichiPhoto = async () =>{
     const response = await fetch(API_URL_UPLOAD, {
         method: "POST",
         headers: {
-            "X-API-KEY": "23c05573-2fea-4b9e-b29a-9d107fe2b1e9",
-            // "Content-Type": "multipart/form-data",
+            "X-API-KEY": "23c05573-2fea-4b9e-b29a-9d107fe2b1e9",           
         },
         body: formData,
     })
     const data = await response.json();
 
-    if( response.status !== 200){
+    console.log(response)
+
+    if( response.status !== 201){
         spanError.innerHTML = "Hubo un error en Subir michis " + response.status  + data.message;    
     } else {
         console.log("Foto de michi cargada");
-        console.log({data});
+        console.log({ data });
         console.log(data.url);
-        saveFavouriteMichis(data.id);
-
-        
+        saveFavouriteMichis(data.id);        
     }
 }
 
