@@ -9,17 +9,46 @@
 </head>
 <body>
     <header>
-        <h1>Gatitos aleatorios</h1>
+        <h1>MichApp</h1>
     </header>
-    
-    <section>
-        <button class="button" id="otroMichi" onclick="otroMichi()">Otros Michis</button>
 
-        <img id="img1" alt="foto gatito aleatoria">
-        <img id="img2" alt="foto gatito aleatoria">
-        <img id="img3" alt="foto gatito aleatoria">
-    </section>
+    <main>
     
+        <span id="error"></span>
+
+        <section id="randomMichis">
+
+            <h2>Michis Aleatorios</h2>
+
+            <button class="button" id="otroMichi" onclick="loadRandomMichis()">Otros Michis</button>
+
+            <article>
+                <img id="img1" alt="foto gatito aleatoria">
+                <button id="btn1">
+                    Guardar michi en favoritos
+                </button>
+            </article>
+
+            <article>
+                <img id="img2" alt="foto gatito aleatoria">
+                <button id="btn2">
+                    Guardar michi en favoritos
+                </button>
+            </article>
+
+        </section>
+        
+        <section id="favoriteMichis">
+
+            <h2>Michis favoritos</h2>
+
+            <article>
+                <img id="img" alt="foto gatito aleatoria">
+                <button>Sacar al michi de favoritos</button>
+            </article>
+        </section>
+    </main>
+
     <footer>
         <p>by ChachisV</p>
     </footer>

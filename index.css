@@ -17,21 +17,37 @@ header{
     font-size: 2.8rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     background-color: #03d7fa;
-    border-radius: 5px;
     color: #11222f;
+    border-bottom: 2px #11222f;
+}
+
+
+
+h2{
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 3.8rem;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #11222f;
+    
 }
 
 section{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    
+    width: 100vw;
+    margin-top: .5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    justify-items: stretch;
+    align-items: stretch;
+    gap: 1rem;
     background-color: #a5dbff;
 }
 
 section button{
-    width: 150px;
+    width: 250px;
     height: 50px;
-    margin: 10px;
+    margin: 20px;
     background-color: #0c548b;
     color: azure;
     border: 0;
