@@ -20,21 +20,25 @@
 
             <h2>Michis Aleatorios</h2>
 
+            <div class="random-article-container">
+                <article>
+                    <img id="img1" alt="foto gatito aleatoria">
+                    <button id="btn1">
+                    Guardar michi en favoritos
+                    </button>
+                </article>
+
+                <article>
+                    <img id="img2" alt="foto gatito aleatoria">
+                    <button id="btn2">
+                    Guardar michi en favoritos
+                    </button>
+                </article>
+            </div>
+
             <button class="button" id="otroMichi" onclick="loadRandomMichis()">Otros Michis</button>
 
-            <article>
-                <img id="img1" alt="foto gatito aleatoria">
-                <button id="btn1">
-                    Guardar michi en favoritos
-                </button>
-            </article>
 
-            <article>
-                <img id="img2" alt="foto gatito aleatoria">
-                <button id="btn2">
-                    Guardar michi en favoritos
-                </button>
-            </article>
 
         </section>
         
@@ -51,11 +55,12 @@
         <section id="favoriteMichis">
 
             <h2>Michis favoritos</h2>
-
-            <article>
-                <img id="img" alt="foto gatito aleatoria">
-                <button>Sacar al michi de favoritos</button>
-            </article>
+            <div class="fav-article-container">
+                <article>
+                    <img id="img" alt="foto gatito aleatoria">
+                    <button>Sacar al michi de favoritos</button>
+                </article>
+            </div>
         </section>
 
 
@@ -65,8 +70,9 @@
         <p>by ChachisV</p>
     </footer>
 
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>
+    
 
     
 </body>
